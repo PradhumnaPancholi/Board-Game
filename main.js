@@ -16,37 +16,36 @@ const cardValues = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 let deck = [];
 
 // Step 2a - Create a function to shuffle the deck
-... shuffleDeck () {
+function shuffleDeck () {
   // Step 2b - Create a placeholder array
-  ... tmp ...
 
   // Step 2c - Iterate through card values 4 times
-  ... (...) {
+  for (cardValues = 0; cardValues < cardValues.length; cardValues += 4) {
     // Step 2d - Using a conditional loop
-    ... (cardValues... != 0) {
+    if (cardValues.length != 0)( {
       // Step 2e - Select a random card from the array
-      ... randomCard = Math...(Math...() * ...);
-
+      randomCard = [Math.floor(Math.random()*cardValues.length)];
       // Step 2f - Add the card to the deck array
+      deck.push(randomCard);
     }
   }
-}
 
 // Step 2g - Call the shuffleDeck function
+shuffleDeck();
 
 
 // Step 3a - Create an array to store 2 players
-... players ...;
+var players = [player1, player2];
 
 // Step 3b - Create a variable to store the current player
-... currentPlayer ...;
+var currentPlayer = 0;
 
 // Step 3c - Create a variable to store the first selected card
-... currentCard ...;
+var currentCard =;
 
 
 // Step 4 - Iterate through the deck and bind a click event to each one
-... {
+for {
   // Step 4a - Create a new div element to be a card
   ... cardEle = ...;
 
