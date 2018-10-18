@@ -22,11 +22,11 @@ function shuffleDeck () {
   // Step 2c - Iterate through card values 4 times
   for (cardValues = 0; cardValues < cardValues.length; cardValues += 4) {
     // Step 2d - Using a conditional loop
-    if (cardValues.length != 0)( {
+    if (cardValues != 0) {
       // Step 2e - Select a random card from the array
-      randomCard = [Math.floor(Math.random()*cardValues.length)];
+      randomCard = cardValues[Math.floor(Math.random()*cardValues.length)]
       // Step 2f - Add the card to the deck array
-      deck.push(randomCard);
+      deck.push(randomCard)
     }
   }
 
@@ -38,32 +38,34 @@ shuffleDeck();
 var players = [player1, player2];
 
 // Step 3b - Create a variable to store the current player
-var currentPlayer = 0;
+var currentPlayer;
 
 // Step 3c - Create a variable to store the first selected card
-var currentCard =;
+var currentCard;
 
 
 // Step 4 - Iterate through the deck and bind a click event to each one
-for {
+for(let value of cardValues ) {
   // Step 4a - Create a new div element to be a card
-  ... cardEle = ...;
+  var cardEle = document.createElement("div");
 
   // Step 3b - Add a 'card' class to the class list on the new div element
-  ...('card');
+  cardEle.classList.add('card');
 
   // Step 3c - Add a data value to the card with the card's value in it
-  ...dataset.value = ...;
+  cardEle.dataset.value = value;;
 
   // Step 3c - Bind the cardSelected function
   // to the click event on the cardEle
-  ...
+  cardEle.addEventListener('click', function (event){
+    cardSelected();
+  });
 }
 
 
 // Step 5 - Create a function to store the logic
 // for when a card is selected
-... cardSelected (...) {
+function cardSelected (currentCard) {
   // Step 5a - Check if there is already a card selected
   ... {
     // Step 6 - Compare the cards
