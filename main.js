@@ -37,6 +37,9 @@ shuffleDeck();
 var players = ['player1', 'player2'];
 // Step 3b - Create a variable to store the current player
 let currentPlayer = players[0];
+//score for 2 playerss/
+let p1Score = 0;
+let p2Score = 0;
 // Step 3c - Create a variable to store the first selected card
 let currentCard ;
 
@@ -68,10 +71,10 @@ function cardSelected (e) {
       {
       // Step 6b - Add a class to the 2 card elements
       // flipping them over
-      cardEle.classList.add('flipped');
-
+      e.target.classList.add('flipped');
+      
       // Step 6c - Add a point to the score for this player
-      score += 1;
+     currentPlayer == players[0] ? p1Score=+1 : p2Score+=1; 
 
       // Step 6d - Tell the player to go again
       // (use string interpolation to show which player you're addressing)
@@ -126,3 +129,7 @@ function cardSelected (e) {
   Step 4 - You will need to reset the messages
   Step 5 - You will need to reset the players
 */
+
+function reset(){
+    console.log('vsjhfdvh');
+}

@@ -26,7 +26,7 @@ body {
 
 /* Step 4 (+4 points) - Write a style for a flipped card */
 .flipped {
-    border: 3px solid black;         
+    background-color: black; 
 }
 
 /* Step 5 - Add a nice style to the message element */
