@@ -9,7 +9,11 @@ var cards = document.querySelector('#cards');
 
 // Step 1d - Select and store the message element
 var msg = document.querySelector('#message');
- 
+
+//to select elements to display score//
+var player1Score = document.querySelector('#p1Score');
+var player2Score = document.querySelector('#p2Score');
+
 
 // Step 2 - Create an array of cards
 const cardValues = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
@@ -34,7 +38,7 @@ function shuffleDeck () {
 // Step 2g - Call the shuffleDeck function
 shuffleDeck();
 // Step 3a - Create an array to store 2 players
-var players = ['player1', 'player2'];
+var players = ['Player1', 'Player2'];
 // Step 3b - Create a variable to store the current player
 let currentPlayer = players[0];
 //score for 2 playerss/
@@ -75,6 +79,9 @@ function cardSelected (e) {
       
       // Step 6c - Add a point to the score for this player
      currentPlayer == players[0] ? p1Score=+1 : p2Score+=1; 
+     //to manipulate score//
+     player1Score.textContent = player1Score.textContent.replace('0', p1Score);
+     player2Score.textContent = player2Score.textContent.replace('0:', p2Score); 
 
       // Step 6d - Tell the player to go again
       // (use string interpolation to show which player you're addressing)

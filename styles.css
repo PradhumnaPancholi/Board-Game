@@ -1,15 +1,15 @@
 /* Step 1 - Add a nice background */
 body {
-     background-color: black;
-    
-
+    background: #136a8a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #267871, #136a8a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #267871, #136a8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 /* Step 2 - Add a nice card style */
 .card {
     height: 100px;
     width: 100px;
-    background-color:#1a5646;
+    background-color:#212c3f;
     border: 3px solid black;
     position: relative;
     float: left;
@@ -20,7 +20,7 @@ body {
 
 /* Step 3 - Add a nice hover effect */
 .card:hover {
-    border: 3px solid #1a5646; 
+    border: 3px solid #212c3f; 
 
 }
 
@@ -31,8 +31,19 @@ body {
 
 /* Step 5 - Add a nice style to the message element */
 #message {
-    color: red;
+    color: white;
 
+}
+
+/*for dislaying scores*/
+#p1Score, #p2Score{
+    color: white;
+} 
+
+.display-5{
+    color: white;
+    background-color: #20365b;
+    height: 100%;   
 }
 
 /* Step 6 - Add 5 more style changes... */
