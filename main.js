@@ -68,6 +68,8 @@ for(let value of deck ) {
 // Step 5 - Create a function to store the logic
 // for when a card is selected
 function cardSelected (e) {
+  //to show valueof clicked card//
+  e.target.innerHTML = e.target.dataset.value;
   // Step 5a - Check if there is already a card selected
   if(currentCard) {
     // Step 6 - Compare the cards
@@ -76,7 +78,7 @@ function cardSelected (e) {
       // Step 6b - Add a class to the 2 card elements
       // flipping them over
       e.target.classList.add('flipped');
-      
+            
       // Step 6c - Add a point to the score for this player
      currentPlayer == players[0] ? p1Score=+1 : p2Score+=1; 
      //to manipulate score//
@@ -87,6 +89,7 @@ function cardSelected (e) {
       // (use string interpolation to show which player you're addressing)
       msg.textContent = `Congratulations! ${currentPlayer}, please go again!`;
       }  
+      else 
       {
       // Step 6e - Provide a fail message to the player
       msg.textContent = "Oh, so sorry!!! But yer' not psychic!";
@@ -99,17 +102,20 @@ function cardSelected (e) {
       // Step 6g - Concatenate a message to the message element
       // advising player 2 that it's their turn now
       // (use string interpolation to show which player you're addressing)
-      msg.textContent = `${currentPlayer}, your turn!`;
-    }
-  } else 
-    {
+      msg.textContent = msg.textContent + `${currentPlayer}, your turn!`;
+      }
+
+  } 
+  else 
+    {  
     // Step 5b - Assign the card to currentCard
     currentCard = e.target.dataset.value;
-
     // Step 5c - Tell the player to select another card
     // (use string interpolation to show which player you're addressing)
     msg.textContent = `${currentPlayer}, please select another card`;
     }
+
+}
 
   // Step 7 - Check if the board is full
   if(deck == cardValues.length) {
@@ -123,7 +129,6 @@ function cardSelected (e) {
       msg.textContent = "The game was a tie! Nice try!";
     }
   }
-}
 
 
 // Take it further - Reset the board allowing the user to play again (Worth 20% of the final grade)
@@ -137,6 +142,3 @@ function cardSelected (e) {
   Step 5 - You will need to reset the players
 */
 
-function reset(){
-    console.log('vsjhfdvh');
-}
