@@ -31,7 +31,7 @@ function shuffleDeck () {
     // Step 2d - Using a conditional loop
     if (tmp.length != 0) {
       // Step 2e - Select a random card from the array
-      randomCard = cardValues[Math.floor(Math.random() * tmp.length)]
+      randomCard = cardValues[Math.floor(Math.random() * cardValues.length)]
       // Step 2f - Add the card to the deck array
       deck.push(randomCard);
     }
