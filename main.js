@@ -29,9 +29,9 @@ function shuffleDeck () {
   for (i = 0; i < cardValues.length * 4; i++ ) {
     
     // Step 2d - Using a conditional loop
-    if (cardValues.length != 0) {
+    if (tmp.length != 0) {
       // Step 2e - Select a random card from the array
-      randomCard = cardValues[Math.floor(Math.random() * cardValues.length)]
+      randomCard = cardValues[Math.floor(Math.random() * tmp.length)]
       // Step 2f - Add the card to the deck array
       deck.push(randomCard);
     }
@@ -72,7 +72,7 @@ for(let value of deck ) {
 // for when a card is selected
 function cardSelected (e) {
   //to show valueof clicked card//
-  e.target.innerHTML = e.target.dataset.value;
+  e.target.textContent = e.target.dataset.value;
   // Step 5a - Check if there is already a card selected
   if(currentCard != null ) {
     // Step 6 - Compare the cards
@@ -147,9 +147,7 @@ function cardSelected (e) {
            board
   Step 4 - You will need to reset the messages
   Step 5 - You will need to reset the players
-  
-
-*/
+ 
 //reset Button functionality//
 resetButton.onclick = function(event){
   alert("Are you sure, You want to reset the game?");
@@ -161,6 +159,13 @@ resetButton.onclick = function(event){
   player1Score.textContent = "0";
   player2Score.textContent = "0";
   deck=[];
+  document.getElementsByClassName("card").textContent = " ";
    
+};  
+
+*/
+//for reset button functionality
+resetButton.onclick = function(event){
+  window.location.reload();
 };
 

@@ -28,7 +28,6 @@ body {
 /* Step 4 (+4 points) - Write a style for a flipped card */
 .flipped {
     background-color:  #212c3f; 
-    color: #212c3f;
 }
 
 /* Step 5 - Add a nice style to the message element */
@@ -54,3 +53,7 @@ body {
 /* 3) */
 /* 4) */
 /* 5) */
+.reset{
+    background-color:  #212c3f; 
+    color: #212c3f;
+}
