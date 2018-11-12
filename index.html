@@ -11,7 +11,6 @@
     
     <title>Board-Game</title>
   </head>
-
   <body>
     <h1 class="display-5 text-center">Memory Game</h1>
     <div class="container">
@@ -20,14 +19,15 @@
       <div id="gameboard">
         <div id="score" class="text-center">
           <!--element to display score -->
-          <div id="p1Score">Player 1 : 0</div>
-          <div id="p2Score">Player 2 : 0</div>
+          <div >Player 1 : <span id="p1Score">0</span></div>
+          <div>Player 2 : <span id="p2Score">0</span></div>
+          <div class="btn btn-success" id="rButton">Reset Game</div>
         </div>  
 
         <div id="cards"></div>
       </div>
     </div>
-    
+       
     <!-- Step 2 - Include your JavaScript file -->
     <script src="main.js"></script>
 

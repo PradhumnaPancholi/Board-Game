@@ -14,6 +14,8 @@ var msg = document.querySelector('#message');
 var player1Score = document.querySelector('#p1Score');
 var player2Score = document.querySelector('#p2Score');
 
+//for reset button//
+var resetButton = document.querySelector('#rButton');
 
 // Step 2 - Create an array of cards
 const cardValues = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
@@ -21,31 +23,32 @@ let deck = [];
 
 // Step 2a - Create a function to shuffle the deck
 function shuffleDeck () {
-  // Step 2b - Create a placeholder array//--> not required--//
-
+  // Step 2b - Create a placeholder array//
+  let tmp = cardValues.slice(0);
   // Step 2c - Iterate through card values 4 times
   for (i = 0; i < cardValues.length * 4; i++ ) {
+    
     // Step 2d - Using a conditional loop
-    if (cardValues != 0) {
+    if (cardValues.length != 0) {
       // Step 2e - Select a random card from the array
-      randomCard = cardValues[Math.floor(Math.random()*cardValues.length)]
+      randomCard = cardValues[Math.floor(Math.random() * cardValues.length)]
       // Step 2f - Add the card to the deck array
-      deck.push(randomCard)
+      deck.push(randomCard);
     }
   }
 }
 
 // Step 2g - Call the shuffleDeck function
 shuffleDeck();
+console.log(deck)
 // Step 3a - Create an array to store 2 players
 var players = ['Player1', 'Player2'];
 // Step 3b - Create a variable to store the current player
-let currentPlayer = players[0];
+let currentPlayer = 0;
 //score for 2 playerss/
-let p1Score = 0;
-let p2Score = 0;
+let playerScore = [0, 0];
 // Step 3c - Create a variable to store the first selected card
-let currentCard ;
+let currentCard;
 
 // Step 4 - Iterate through the deck and bind a click event to each one
 for(let value of deck ) {
@@ -71,23 +74,25 @@ function cardSelected (e) {
   //to show valueof clicked card//
   e.target.innerHTML = e.target.dataset.value;
   // Step 5a - Check if there is already a card selected
-  if(currentCard) {
+  if(currentCard != null ) {
     // Step 6 - Compare the cards
-    if(currentCard === e.target.dataset.value) 
+    if(currentCard.textContent === e.target.textContent) 
       {
       // Step 6b - Add a class to the 2 card elements
       // flipping them over
+      //currentCard.classList.add('flipped');
       e.target.classList.add('flipped');
+      currentCard.classList.add('flipped');
             
-      // Step 6c - Add a point to the score for this player
-     currentPlayer == players[0] ? p1Score=+1 : p2Score+=1; 
+     // Step 6c - Add a point to the score for this player
+     playerScore[currentPlayer] += 1; 
      //to manipulate score//
-     player1Score.textContent = player1Score.textContent.replace('0', p1Score);
-     player2Score.textContent = player2Score.textContent.replace('0:', p2Score); 
+     player1Score.textContent = playerScore[0];
+     player2Score.textContent = playerScore[1]; 
 
       // Step 6d - Tell the player to go again
       // (use string interpolation to show which player you're addressing)
-      msg.textContent = `Congratulations! ${currentPlayer}, please go again!`;
+      msg.textContent = `Congratulations! ${players[currentPlayer]}, please go again!`;
       }  
       else 
       {
@@ -95,42 +100,44 @@ function cardSelected (e) {
       msg.textContent = "Oh, so sorry!!! But yer' not psychic!";
 
       // Step 6f - Using a ternary, change players
-      currentPlayer = players[0] ? currentPlayer = players[1] : currentPlayer = players[0];
-      //my comment-reset value for current card//
+      currentPlayer = (currentPlayer === 0) ? 1 : 0;
       currentCard = undefined;
-
+      
       // Step 6g - Concatenate a message to the message element
       // advising player 2 that it's their turn now
       // (use string interpolation to show which player you're addressing)
-      msg.textContent = msg.textContent + `${currentPlayer}, your turn!`;
+      msg.textContent = msg.textContent + `${players[currentPlayer]}, your turn!`;
       }
-
+    //turn currentcard into null
+    currentCard = null;  
   } 
   else 
     {  
     // Step 5b - Assign the card to currentCard
-    currentCard = e.target.dataset.value;
+    currentCard = e.target;
     // Step 5c - Tell the player to select another card
     // (use string interpolation to show which player you're addressing)
-    msg.textContent = `${currentPlayer}, please select another card`;
+    msg.textContent = `${players[currentPlayer]}, please select another card`;
     }
 
-}
-
   // Step 7 - Check if the board is full
-  if(deck == cardValues.length) {
+  if(document.querySelector('.flipped') === 52) {
     // Step 7a - Check if one of the players has won
-    if(currentPlayer = 0 ) {
+    if(p1Score > p2Score ) {
       // Step 7b - Tell the player they've won
       // (use string interpolation to show which player you're addressing)
-      msg.textContent = `${currentPlayer}, you won!!! Congratulations!`;
-    } else {
+      msg.textContent = `${players[currentPlayer]}, you won!!! Congratulations!`;
+    } 
+    else if (p1Score < p2Score ) {
+      msg.textContent = `${players[currentPlayer]}, you won!!! Congratulations!`
+    }
+    else {
       // Step 7c - Tell the players that the game has ended in a tie
       msg.textContent = "The game was a tie! Nice try!";
     }
-  }
-
-
+  }  
+}
+ 
 // Take it further - Reset the board allowing the user to play again (Worth 20% of the final grade)
 /*
   Step 1 - You will need a reset button in index.html
@@ -140,5 +147,20 @@ function cardSelected (e) {
            board
   Step 4 - You will need to reset the messages
   Step 5 - You will need to reset the players
+  
+
 */
+//reset Button functionality//
+resetButton.onclick = function(event){
+  alert("Are you sure, You want to reset the game?");
+  //resetting all mutated/modified values to the initial value//
+  currentPlayer = 0;
+  playerScore = [0, 0];
+  currentCard = null;
+  msg.textContent="";
+  player1Score.textContent = "0";
+  player2Score.textContent = "0";
+  deck=[];
+   
+};
 
